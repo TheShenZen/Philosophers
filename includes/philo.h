@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:51:09 by seciurte          #+#    #+#             */
-/*   Updated: 2021/12/31 00:21:11 by seciurte         ###   ########.fr       */
+/*   Updated: 2021/12/31 15:59:52 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 typedef struct s_philo
 {
+	pthread_t	philo;
 	int			name;
 	int			time_to_die;
 	int			time_to_eat;
@@ -33,5 +34,7 @@ typedef struct s_philo
 	int			fork;
 	char		status;
 }				t_philo;
+
+int		ft_atoi(const char *nptr);
 
 #endif
