@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:51:09 by seciurte          #+#    #+#             */
-/*   Updated: 2021/12/31 15:59:52 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/03 16:58:12 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,22 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# define	IS_DEAD 0001
-# define	IS_EATING 0010
-# define	IS_SLEEPING 0100
-# define	IS_THINKING 1000
-
 typedef struct s_philo
 {
 	pthread_t	philo;
 	int			name;
-	int			time_to_die;
-	int			time_to_eat;
-	int			time_to_sleep;
-	int			fork;
-	char		status;
 }				t_philo;
+
+typedef struct s_sim_rules
+{
+	int					time_to_die;
+	int					time_to_eat;
+	int					time_to_sleep;
+	int					nb_of_cycles;
+	int					nb_of_forks;
+	pthread_mutex_t		padlock;
+}				t_sim_rules;
+
 
 int		ft_atoi(const char *nptr);
 
