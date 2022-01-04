@@ -6,84 +6,91 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:53:00 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/03 16:44:39 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/04 18:44:56 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*routine(void *arg)
+static void	start_work(void *arg)
 {
-	pthread_mutex_t		*mtx;
-
-	mtx = (pthread_mutex_t *)arg;
-	while (1)
-	{
-		printf("is eating !\n");
-	}
+	printf("I am alive!");
 	return (NULL);
 }
 
-int	spwan_philoshophers(int nb_philos, int *philo_timers, pthread_mutex_t *mtx)
+static int	spwan_philos(t_sim_rules *sim_rules, t_philo **philos)
 {
-	pthread_t		*philos;
 	int			i;
 
-	philos = malloc(sizeof(pthread_t) * nb_philos + 1);
-	if (philos == NULL)
-		return (1);
+	(*philos) = malloc(sizeof(t_philo) * sim_rules->nb_of_philos + 1);
+	if ((*philos) == NULL)
+		return (-1);
 	i = 0;
-	while (i < nb_philos)
+	while (i < sim_rules->nb_of_philos)
 	{
-		if (pthread_create(&philos[i],
-			NULL, routine, (void *) mtx) != 0)
+		if (pthread_create(&((*philos)[i].philo), NULL, start_work, *philos))
 		{
-			free(philos);
-			printf("Error\n");
-			return (1);
+			free((*philos));
+			return (-1);
 		}
+		if (pthread_mutex_init(&((*philos)[i].mtx), NULL))
+		{
+			free((*philos));
+			return (-1);
+		}
+		(*philos)[i].name = i;
+		(*philos)[i].nb_of_cycles = sim_rules->nb_of_cycles;
 		i++;
 	}
-	for (int i = 0; i < 10; i++)
-	{
-		pthread_join(philos[i], NULL);
-	}
+	(*philos)[i] = NULL;
 	return (0);
 }
 
-static int	run_philo_sim(int nb_phs, int *phs_timers, pthread_mutex_t *mtx)
+static void	give_philos_the_rules(t_philo **philos, t_sim_rules *sim_rules)
 {
-	if (pthread_mutex_init(mtx, NULL) != 0)
+	int		i;
+
+	i = 0;
+	while ((*philos)[i])
 	{
-		printf("Error\n");
-		return (-1);
+		(*philos)[i].time_to_die = sim_rules->time_to_die;
+		(*philos)[i].time_to_eat = sim_rules->time_to_eat;
+		(*philos)[i].time_to_sleep = sim_rules->time_to_sleep;
+		i++;
 	}
-	if (spwan_philoshophers(nb_phs, phs_timers, mtx) != 0)
-	{
-		printf("Error\n");
+}
+
+static int	start_simulation(t_sim_rules *sim_rules)
+{
+	t_philo		*philos;
+
+	if (spwan_philos(sim_rules, &philos))
 		return (-1);
-	}
+	give_philos_the_rules(&philos, sim_rules);
 	return (0);
 }
 
 int	main(int ac, char **av)
 {
+	t_sim_rules		*sim_rules;
 
-	pthread_mutex_t		mtx;
-
-	if (ac == 5)
-		nb_cycles = 0;
-	else if (ac == 6)
-		nb_cycles = ft_atoi(av[5]);
-	else
-	{
-		printf("Wrong number of arguments.\n");
-		return (-1);
-	}
-	if (run_philo_sim(nb_philos, philo_timers, &mtx))
+	sim_rules = malloc(sizeof(t_sim_rules));
+	if (sim_rules = NULL)
 	{
 		printf("Error\n");
 		return (-1);
 	}
-	pthread_mutex_destroy(&mtx);
+	if (ac == 5)
+		sim_rules->nb_of_cycles = -1;
+	else if (ac == 6)
+		sim_rules->nb_of_cycles = ft_atoi(av[5]);
+	else
+	{
+		printf("Error\n");
+		return (-1);
+	}
+	sim_rules->nb_of_philos = ft_atoi(av[1]);
+	sim_rules->time_to_die = ft_atoi(av[1]);
+	sim_rules->time_to_eat = ft_atoi(av[1]);
+	sim_rules->time_to_sleep = ft_atoi(av[1]);
 }
