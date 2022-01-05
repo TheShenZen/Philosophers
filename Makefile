@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 11:48:55 by seciurte          #+#    #+#              #
-#    Updated: 2021/12/31 00:22:50 by seciurte         ###   ########.fr        #
+#    Updated: 2022/01/05 18:36:48 by seciurte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,9 @@ BUILD_BNS		=	$(CC) $(CFLAGS) ${IFLAGS} $(OBJ_BONUS) $(LFLAGS) $(LIB) -o $(NAME)
 
 SRC			= 	philo.c \
 				ft_atoi.c \
+				get_time.c \
+				create_sim.c \
+				manage_sim.c \
 
 SRC_BNS		=	$(addsuffix _bonus.c, $(basename $(SRC)))
 

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:51:09 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/04 18:40:40 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/05 18:36:35 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_philo
 	int					time_to_eat;
 	int					time_to_sleep;
 	int					fork;
+	int					status;
 	pthread_mutex_t		mtx;
 }				t_philo;
 
@@ -42,5 +43,11 @@ typedef struct s_sim_rules
 
 
 int		ft_atoi(const char *nptr);
+long	get_time(void);
+int		spwan_philos(t_sim_rules *sim_rules, t_philo **philos);
+void	give_philos_the_rules(t_philo **philos, t_sim_rules *sim_rules);
+int		wait_for_philos(t_philo **philos, t_sim_rules *sim_rules);
+int		print_status(t_philo *philo);
+void	*start_work(void *arg);
 
 #endif
