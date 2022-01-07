@@ -6,11 +6,23 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:53:00 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/06 19:47:13 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/07 16:16:01 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static int	set_sim_rules(t_sim_rules *sim_rules, char **av)
+{
+	sim_rules->nb_of_philos = ft_atoi(av[1]);
+	sim_rules->time_to_die = ft_atoi(av[1]);
+	sim_rules->time_to_eat = ft_atoi(av[1]);
+	sim_rules->time_to_sleep = ft_atoi(av[1]);
+	if (sim_rules->time_to_die < 0 ||sim_rules->time_to_eat < 0 ||
+		sim_rules->time_to_sleep < 0 || sim_rules->nb_of_philos < 0)
+		return (-1);
+	return (0);
+}
 
 static int	start_simulation(t_sim_rules *sim_rules, char **av)
 {
@@ -28,19 +40,6 @@ static int	start_simulation(t_sim_rules *sim_rules, char **av)
 	if (wait_for_philos(&philos, sim_rules))
 		return (-1);
 	free(philos);
-	return (0);
-}
-
-static int	set_sim_rules(t_sim_rules *sim_rules, char **av)
-{
-	sim_rules->nb_of_philos = ft_atoi(av[1]);
-	sim_rules->time_to_die = ft_atoi(av[1]);
-	sim_rules->time_to_eat = ft_atoi(av[1]);
-	sim_rules->time_to_sleep = ft_atoi(av[1]);
-	if (sim_rules->nb_of_cycles < 0 || sim_rules->time_to_die < 0 ||
-		sim_rules->time_to_eat < 0 || sim_rules->time_to_sleep < 0 ||
-		sim_rules->nb_of_philos < 0)
-		return (-1);
 	return (0);
 }
 
