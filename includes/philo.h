@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:51:09 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/06 19:20:12 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:01:11 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_philo
 {
 	int					name;
 	int					nb_of_cycles;
-	int					fork;
+	int					*forks;
 	t_sim_rules			*sim_rules;
 	struct s_philo		*philos;
 	pthread_t			philo;
@@ -41,9 +41,8 @@ typedef struct s_philo
 
 int		ft_atoi(const char *nptr);
 long	get_time(void);
-int		spwan_philos(t_sim_rules *sim_rules, t_philo **philos);
-void	give_philos_the_rules(t_philo **philos, t_sim_rules *sim_rules);
-int		wait_for_philos(t_philo **philos, t_sim_rules *sim_rules);
+int		spwan_philos(t_sim_rules *sim_rules, t_philo *philos);
+int		wait_for_philos(t_philo *philos, t_sim_rules *sim_rules);
 int		print_status(t_philo *philo);
 void	*start_work(void *arg);
 
