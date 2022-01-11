@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_sim.c                                       :+:      :+:    :+:   */
+/*   check_death.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 18:35:51 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/11 20:54:53 by seciurte         ###   ########.fr       */
+/*   Created: 2022/01/11 16:59:01 by seciurte          #+#    #+#             */
+/*   Updated: 2022/01/11 21:02:41 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*start_work(void *arg)
+int	is_dead(int time_to_die, int last_meal)
 {
-	t_philo				*philo;
-	// int					last_activity;
-	// int					last_meal;
+	long		time;
 
-	philo = (t_philo *)arg;
-	while (philo->nb_of_cycles)
-	{
-		philo_sleep(philo);
-		usleep(450);
-		philo->nb_of_cycles--;
-	}
-	return (NULL);
+	time = get_time();
+	if (time - last_meal > time_to_die)
+		return (1);
+	return (0);
 }

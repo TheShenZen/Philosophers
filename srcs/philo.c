@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:53:00 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/10 16:58:52 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:26:25 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,15 @@ static int	start_simulation(t_sim_rules *sim_rules, char **av)
 {
 	t_philo			*philos;
 
+	philos = NULL;
 	if (set_sim_rules(sim_rules, av))
 		return (-1);
-	get_time();
-	if (spwan_philos(sim_rules, &philos))
+	if (init_philos(&philos, sim_rules))
 		return (-1);
-	if (wait_for_philos(&philos, sim_rules))
+	get_time();
+	if (spwan_philos(sim_rules, philos))
+		return (-1);
+	if (wait_for_philos(philos, sim_rules))
 		return (-1);
 	free(philos);
 	return (0);
