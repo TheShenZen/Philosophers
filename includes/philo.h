@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:51:09 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/10 16:01:11 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/11 13:12:33 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_philo
 	t_sim_rules			*sim_rules;
 	struct s_philo		*philos;
 	pthread_t			philo;
-	pthread_mutex_t		mtx;
+	pthread_mutex_t		*mtx;
 }				t_philo;
 
 int		ft_atoi(const char *nptr);
