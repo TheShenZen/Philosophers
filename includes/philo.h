@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:51:09 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/11 19:41:30 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/12 16:21:07 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,8 @@ int		wait_for_philos(t_philo *philos, t_sim_rules *sim_rules);
 int		print_status(t_philo *philo);
 void	*start_work(void *arg);
 int		philo_sleep(t_philo *philo);
+int		philo_think(t_philo *philo);
+int		philo_take_fork(t_philo *philo, int fork);
+int		philo_eat(t_philo *philo);
 
 #endif

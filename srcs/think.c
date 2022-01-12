@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_sim.c                                       :+:      :+:    :+:   */
+/*   think.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 18:35:51 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/12 16:35:59 by seciurte         ###   ########.fr       */
+/*   Created: 2022/01/12 15:37:19 by seciurte          #+#    #+#             */
+/*   Updated: 2022/01/12 15:45:30 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*start_work(void *arg)
+int	philo_think(t_philo *philo)
 {
-	t_philo				*philo;
-	int					last_activity;
-	int					last_meal;
-	int					status;
+	long		time;
 
-	philo = (t_philo *)arg;
-	while (philo->nb_of_cycles)
-	{
-		usleep(450);
-		philo->nb_of_cycles--;
-	}
-	return (NULL);
+	time = get_time();
+	printf("%ld %d is thinking\n", time, philo->name);
+	return (time);
 }

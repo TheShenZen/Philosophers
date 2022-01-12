@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_sim.c                                       :+:      :+:    :+:   */
+/*   take_fork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 18:35:51 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/12 16:35:59 by seciurte         ###   ########.fr       */
+/*   Created: 2022/01/12 15:45:38 by seciurte          #+#    #+#             */
+/*   Updated: 2022/01/12 16:07:22 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*start_work(void *arg)
+int	philo_take_fork(t_philo *philo, int fork)
 {
-	t_philo				*philo;
-	int					last_activity;
-	int					last_meal;
-	int					status;
+	long		time;
 
-	philo = (t_philo *)arg;
-	while (philo->nb_of_cycles)
-	{
-		usleep(450);
-		philo->nb_of_cycles--;
-	}
-	return (NULL);
+	time = get_time();
+	pthread_mutex_lock(&(philo->mtx[philo->name]));
+	if (philo->forks[fork] > 0)
+		philo->forks[fork]--;
+	printf("%ld %d has taken a fork\n", time, philo->name);
+	pthread_mutex_unlock(&(philo->mtx[philo->name]));
+	return (1);
 }
