@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 11:48:55 by seciurte          #+#    #+#              #
-#    Updated: 2022/01/12 16:17:07 by seciurte         ###   ########.fr        #
+#    Updated: 2022/01/13 15:55:44 by seciurte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC			= 	philo.c \
 				sleep.c \
 				think.c \
 				take_fork.c \
+				eat.c \
 
 SRC_BNS		=	$(addsuffix _bonus.c, $(basename $(SRC)))
 
