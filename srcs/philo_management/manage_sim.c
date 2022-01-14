@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 18:35:51 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/13 18:21:28 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/14 16:52:00 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,8 @@
 void	*start_work(void *arg)
 {
 	t_philo				*philo;
+
+	philo = (t_philo *)arg;
+	manage_activity(philo);
 	return (NULL);
 }

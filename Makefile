@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 11:48:55 by seciurte          #+#    #+#              #
-#    Updated: 2022/01/13 15:55:44 by seciurte         ###   ########.fr        #
+#    Updated: 2022/01/14 16:42:03 by seciurte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,16 +29,17 @@ SRC			= 	philo.c \
 				ft_atoi.c \
 				get_time.c \
 				init_utils.c \
-				create_sim.c \
-				manage_sim.c \
-				sleep.c \
-				think.c \
-				take_fork.c \
-				eat.c \
+				philo_management/create_sim.c \
+				philo_management/manage_sim.c \
+				philo_management/philo_activity.c \
+				philo_actions/sleep.c \
+				philo_actions/think.c \
+				philo_actions/take_fork.c \
+				philo_actions/eat.c \
 
 SRC_BNS		=	$(addsuffix _bonus.c, $(basename $(SRC)))
 
-OBJ			=	$(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
+OBJ			=	$(addprefix $(OBJ_DIR)/, $(notdir $(SRC:%.c=%.o)))
 
 OBJ_BONUS	=	$(addprefix $(OBJ_DIR)/, $(SRC_BNS:%.c=%.o))
 

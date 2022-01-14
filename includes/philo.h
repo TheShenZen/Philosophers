@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:51:09 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/12 16:21:07 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/14 15:46:47 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ int		philo_sleep(t_philo *philo);
 int		philo_think(t_philo *philo);
 int		philo_take_fork(t_philo *philo, int fork);
 int		philo_eat(t_philo *philo);
+int		manage_activity(t_philo *philo);
 
 #endif
