@@ -6,22 +6,40 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:53:00 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/11 20:26:25 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:56:46 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	set_sim_rules(t_sim_rules *sim_rules, char **av)
+static int	set_sim_rules(t_sim_rules *sim_rules, char **av, int ac)
 {
 	sim_rules->nb_of_philos = ft_atoi(av[1]);
-	sim_rules->time_to_die = ft_atoi(av[1]);
-	sim_rules->time_to_eat = ft_atoi(av[1]);
-	sim_rules->time_to_sleep = ft_atoi(av[1]);
+	sim_rules->time_to_die = ft_atoi(av[2]);
+	sim_rules->time_to_eat = ft_atoi(av[3]);
+	sim_rules->time_to_sleep = ft_atoi(av[4]);
+	if (ac == 6)
+		sim_rules->nb_of_cycles = ft_atoi(av[5]);
+	else
+		sim_rules->nb_of_cycles = 0;
 	if (sim_rules->time_to_die < 0 ||sim_rules->time_to_eat < 0 ||
-		sim_rules->time_to_sleep < 0 || sim_rules->nb_of_philos < 0)
+		sim_rules->time_to_sleep < 0 || sim_rules->nb_of_philos < 0 ||
+		sim_rules->nb_of_cycles < 0)
 		return (-1);
+	sim_rules->nb_of_cycles = -1;
+	sim_rules->stop = 0;
 	return (0);
+}
+
+static void	check_for_dead_philos(t_philo *philo)
+{
+	int			i;
+
+	i = 0;
+	while (1)
+	{
+		if (is_dead())
+	}
 }
 
 static int	start_simulation(t_sim_rules *sim_rules, char **av)
@@ -52,11 +70,7 @@ int	main(int ac, char **av)
 		printf("Error\n");
 		return (-1);
 	}
-	if (ac == 5)
-		sim_rules->nb_of_cycles = -1;
-	else if (ac == 6)
-		sim_rules->nb_of_cycles = ft_atoi(av[5]);
-	else
+	else if (ac != 6 && ac != 5)
 	{
 		printf("Error\n");
 		return (-1);

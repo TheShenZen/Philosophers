@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:51:09 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/14 15:46:47 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:18:25 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_sim_rules
 	int					time_to_sleep;
 	int					nb_of_cycles;
 	int					nb_of_philos;
+	int					stop;
 }				t_sim_rules;
 
 typedef struct s_philo
@@ -50,6 +51,6 @@ int		philo_sleep(t_philo *philo);
 int		philo_think(t_philo *philo);
 int		philo_take_fork(t_philo *philo, int fork);
 int		philo_eat(t_philo *philo);
-int		manage_activity(t_philo *philo);
+int		is_dead(int time_to_die, int last_meal);
 
 #endif

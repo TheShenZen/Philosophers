@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 11:48:55 by seciurte          #+#    #+#              #
-#    Updated: 2022/01/14 16:42:03 by seciurte         ###   ########.fr        #
+#    Updated: 2022/01/17 16:18:45 by seciurte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC			= 	philo.c \
 				init_utils.c \
 				philo_management/create_sim.c \
 				philo_management/manage_sim.c \
-				philo_management/philo_activity.c \
+				philo_management/check_death.c \
 				philo_actions/sleep.c \
 				philo_actions/think.c \
 				philo_actions/take_fork.c \
@@ -49,7 +49,7 @@ D_NO_BONUS  =	-DBONUS=0
 
 D_BONUS		=	-DBONUS=1
 
-CFLAGS		=	-Wall -Wextra -Werror -pthread
+CFLAGS		=	-Wall -Wextra -Werror -pthread #-g3 -fsanitize=address
 
 LFLAGS		=	$(foreach dir, $(LIB_DIR), -L $(dir))
 
