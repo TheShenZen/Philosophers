@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 11:48:55 by seciurte          #+#    #+#              #
-#    Updated: 2022/01/17 16:18:45 by seciurte         ###   ########.fr        #
+#    Updated: 2022/01/18 18:13:01 by seciurte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,13 +29,15 @@ SRC			= 	philo.c \
 				ft_atoi.c \
 				get_time.c \
 				init_utils.c \
+				check_args.c \
+				utils.c \
 				philo_management/create_sim.c \
 				philo_management/manage_sim.c \
 				philo_management/check_death.c \
 				philo_actions/sleep.c \
-				philo_actions/think.c \
 				philo_actions/take_fork.c \
 				philo_actions/eat.c \
+				philo_actions/print_status.c \
 
 SRC_BNS		=	$(addsuffix _bonus.c, $(basename $(SRC)))
 

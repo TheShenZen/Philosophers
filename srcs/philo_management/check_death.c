@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 16:59:01 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/17 09:42:02 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/18 12:12:58 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_dead(int time_to_die, int last_meal)
 	long		time;
 
 	time = get_time();
-	if (time - last_meal > time_to_die)
+	if (time - last_meal > time_to_die && last_meal != 0)
 		return (1);
 	return (0);
 }

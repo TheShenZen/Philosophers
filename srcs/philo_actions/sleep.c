@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 16:33:37 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/17 09:50:03 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:11:58 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 int	philo_sleep(t_philo *philo)
 {
-	long		time;
-
-	time = get_time();
-	printf("%ld %d is sleeping\n", time, philo->name);
+	if (print_status(philo->name, SLEEP))
+		return (-1);
 	usleep(1000 * philo->sim_rules->time_to_sleep);
-	return (time);
+	return (0);
 }

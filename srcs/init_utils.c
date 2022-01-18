@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 16:55:39 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/17 11:52:21 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/18 12:08:09 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	init_philos(t_philo **philos, t_sim_rules *sim_rules)
 	while (i < sim_rules->nb_of_philos)
 	{
 		(*philos)[i].name = i;
+		(*philos)[i].last_meal = 0;
 		(*philos)[i].nb_of_cycles = sim_rules->nb_of_cycles;
 		(*philos)[i].sim_rules = sim_rules;
 		(*philos)[i].forks = (*philos)->forks;
