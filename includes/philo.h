@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:51:09 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/18 18:16:17 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/19 14:44:03 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define FORK 1
 # define EAT 2
 # define SLEEP 3
-# define DEAD 4
 
 typedef struct s_sim_rules
 {
@@ -63,7 +62,7 @@ int		check_args(int ac, char **av);
 int		ft_strlen(char *str);
 char	*ft_itoa(int n);
 int		ft_strncmp(char *s1, char *s2, size_t n);
-int		print_status(int name, int msg);
+int		print_status(int name, int msg, t_philo *philo);
 
 
 #endif
