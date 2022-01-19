@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 11:48:55 by seciurte          #+#    #+#              #
-#    Updated: 2022/01/19 16:14:24 by seciurte         ###   ########.fr        #
+#    Updated: 2022/01/19 18:42:35 by seciurte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ D_NO_BONUS  =	-DBONUS=0
 
 D_BONUS		=	-DBONUS=1
 
-CFLAGS		=	-Wall -Wextra -Werror -pthread  -fsanitize=thread
+CFLAGS		=	-Wall -Wextra -Werror -pthread #-g3 -fsanitize=thread
 
 LFLAGS		=	$(foreach dir, $(LIB_DIR), -L $(dir))
 

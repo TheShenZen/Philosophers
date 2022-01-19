@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 17:44:23 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/10 16:54:54 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:50:47 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	spwan_philos(t_sim_rules *sim_rules, t_philo *philos)
 	while (i < sim_rules->nb_of_philos)
 	{
 		if (pthread_create(&(philos[i].philo), NULL,
-			start_work, &philos[i]))
+				start_work, &philos[i]))
 		{
 			free(philos);
 			return (-1);

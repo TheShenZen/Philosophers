@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 16:55:39 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/19 14:44:56 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:46:19 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ static int	init_forks(int **forks, t_sim_rules *sim_rules)
 	if (*forks == NULL)
 		return (-1);
 	i = 0;
-	while(i < sim_rules->nb_of_philos)
+	while (i < sim_rules->nb_of_philos)
 	{
 		(*forks)[i] = 1;
 		i++;
 	}
 	return (0);
 }
+
 static int	init_padlocks(pthread_mutex_t **padlocks, t_sim_rules *sim_rules)
 {
 	int			i;
@@ -45,6 +46,17 @@ static int	init_padlocks(pthread_mutex_t **padlocks, t_sim_rules *sim_rules)
 		i++;
 	}
 	return (0);
+}
+
+static void	more_than_25_lines(t_philo **philos, t_sim_rules *sim_rules,
+		pthread_mutex_t	*padlocks, int i)
+{
+	(*philos)[i].name = i;
+	(*philos)[i].last_meal = 0;
+	(*philos)[i].nb_of_cycles = sim_rules->nb_of_cycles;
+	(*philos)[i].sim_rules = sim_rules;
+	(*philos)[i].forks = (*philos)->forks;
+	(*philos)[i].mtx = padlocks;
 }
 
 int	init_philos(t_philo **philos, t_sim_rules *sim_rules)
@@ -66,12 +78,7 @@ int	init_philos(t_philo **philos, t_sim_rules *sim_rules)
 	i = 0;
 	while (i < sim_rules->nb_of_philos)
 	{
-		(*philos)[i].name = i;
-		(*philos)[i].last_meal = 0;
-		(*philos)[i].nb_of_cycles = sim_rules->nb_of_cycles;
-		(*philos)[i].sim_rules = sim_rules;
-		(*philos)[i].forks = (*philos)->forks;
-		(*philos)[i].mtx = padlocks;
+		more_than_25_lines(philos, sim_rules, padlocks, i);
 		i++;
 	}
 	return (0);
