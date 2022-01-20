@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 12:31:30 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/19 18:46:42 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:16:05 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	is_all_digit(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-')
+		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}

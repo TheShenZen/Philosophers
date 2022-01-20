@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 18:35:51 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/19 18:38:35 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:21:49 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,14 @@ int	terminate(t_philo *philo)
 void	*start_work(void *arg)
 {
 	t_philo				*philo;
+	int					time;
 
 	philo = (t_philo *)arg;
+	pthread_mutex_lock(&philo->sim_rules->mtx);
+	time = 1000 * philo->sim_rules->time_to_eat / 2;
+	pthread_mutex_unlock(&philo->sim_rules->mtx);
+	if (philo->name % 2 == 0)
+		usleep(time);
 	while (philo->nb_of_cycles && !terminate(philo))
 	{
 		if (!terminate(philo))

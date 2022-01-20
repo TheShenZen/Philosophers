@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:24:33 by seciurte          #+#    #+#             */
-/*   Updated: 2022/01/19 18:47:45 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:16:02 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_for_dead_philos(t_philo *philo)
 	if (is_dead(philo->sim_rules->time_to_die, philo->last_meal)
 		&& philo->sim_rules->stop == 0)
 	{
-		printf("%ld %d died\n", get_time(), philo->name);
+		printf("%ld %d died\n", get_time(), philo->name + 1);
 		philo->sim_rules->stop = 1;
 	}
 	pthread_mutex_unlock(&philo->sim_rules->mtx);
@@ -48,7 +48,7 @@ int	print_status(int name, int msg, t_philo *philo)
 		return (0);
 	}
 	time = get_time();
-	printf_msg(time, name, msg);
+	printf_msg(time, name + 1, msg);
 	pthread_mutex_unlock(&philo->sim_rules->mtx);
 	return (0);
 }
